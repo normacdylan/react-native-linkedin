@@ -210,6 +210,7 @@ export default class LinkedInModal extends React.Component {
     closeStyle: ViewPropTypes.style,
     animationType: PropTypes.string,
     shouldGetAccessToken: PropTypes.bool,
+    modalVisible: PropTypes.bool,
   }
   static defaultProps = {
     onError: logError,
@@ -220,10 +221,11 @@ export default class LinkedInModal extends React.Component {
     wrapperStyle: StyleSheet.create({}),
     closeStyle: StyleSheet.create({}),
     shouldGetAccessToken: true,
+    modalVisible: false
   }
   state: State = {
     raceCondition: false,
-    modalVisible: false,
+    modalVisible: this.props.modalVisible,
     authState: v4(),
   }
 
@@ -315,17 +317,11 @@ export default class LinkedInModal extends React.Component {
   }
 
   render() {
-    const { modalVisible } = this.state
+    const { modalVisible } = this.props
     const { animationType, containerStyle, wrapperStyle, closeStyle } = this.props
     return (
       <View>
-        <TouchableOpacity
-          accessibilityComponentType={'button'}
-          accessibilityTraits={['button']}
-          onPress={this.open}
-        >
           {this.renderButton()}
-        </TouchableOpacity>
         <Modal
           animationType={animationType}
           transparent
