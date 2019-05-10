@@ -318,7 +318,7 @@ export default class LinkedInModal extends React.Component {
     return (
       <View>
           <TouchableOpacity onPress={this.onOpen}>
-            {this.renderButton()}
+            {this.props.renderButton()}
           </TouchableOpacity>
         <Modal
           animationType={animationType}
