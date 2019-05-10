@@ -165,14 +165,12 @@ export const onLoadStart = async (
 const styles = StyleSheet.create({
   constainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    paddingVertical: 40,
-    paddingHorizontal: 10,
+    backgroundColor: '#f5f5f5',
   },
   wrapper: {
     flex: 1,
     borderRadius: 5,
-    borderWidth: 10,
+    borderWidth: 2,
     borderColor: 'rgba(0, 0, 0, 0.6)',
   },
   close: {
@@ -210,7 +208,6 @@ export default class LinkedInModal extends React.Component {
     closeStyle: ViewPropTypes.style,
     animationType: PropTypes.string,
     shouldGetAccessToken: PropTypes.bool,
-    modalVisible: PropTypes.bool,
   }
   static defaultProps = {
     onError: logError,
@@ -221,11 +218,10 @@ export default class LinkedInModal extends React.Component {
     wrapperStyle: StyleSheet.create({}),
     closeStyle: StyleSheet.create({}),
     shouldGetAccessToken: true,
-    modalVisible: false,
   }
   state: State = {
     raceCondition: false,
-    modalVisible: this.props.modalVisible,
+    modalVisible: false,
     authState: v4(),
   }
 
@@ -317,17 +313,13 @@ export default class LinkedInModal extends React.Component {
   }
 
   render() {
-    const { modalVisible } = this.props
+    const { modalVisible } = this.state
     const { animationType, containerStyle, wrapperStyle, closeStyle } = this.props
     return (
       <View>
-        {/* <TouchableOpacity
-          accessibilityComponentType={'button'}
-          accessibilityTraits={['button']}
-          onPress={this.open}
-        >
-          {this.renderButton()}
-        </TouchableOpacity> */}
+          <TouchableOpacity onPress={this.onOpen}>
+            {this.renderButton()}
+          </TouchableOpacity>
         <Modal
           animationType={animationType}
           transparent
