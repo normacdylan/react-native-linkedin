@@ -276,6 +276,7 @@ export default class LinkedInModal extends React.Component {
   }
 
   open = () => {
+    console.log('opening')
     const { onOpen } = this.props
     if (onOpen) onOpen()
     this.setState({ modalVisible: true })
@@ -318,10 +319,11 @@ export default class LinkedInModal extends React.Component {
     return (
       <View>
           <TouchableOpacity
+            style={{zIndex: 1}}
             accessibilityComponentType={'button'}
             accessibilityTraits={['button']}
             onPress={this.open}>
-            {this.renderButton()}
+              {this.renderButton()}
           </TouchableOpacity>
         <Modal
           animationType={animationType}
