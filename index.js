@@ -129,9 +129,9 @@ export const fetchToken: string => Promise<LinkedInToken> = async payload => {
   return await response.json()
 }
 
-export const logError = (error: ErrorType) =>
+export const logError = (error: ErrorType) => 
   // eslint-disable-next-line
-  // console.error(JSON.stringify(error, null, 2))
+   console.log(JSON.stringify(error, null, 2))
 
 export const onLoadStart = async (
   url: string,
@@ -210,7 +210,7 @@ export default class LinkedInModal extends React.Component {
     shouldGetAccessToken: PropTypes.bool,
   }
   static defaultProps = {
-    onError: logError,
+    onError: () => {},
     permissions: ['r_basicprofile', 'r_emailaddress'],
     linkText: 'Login with LinkedIn',
     animationType: 'fade',
