@@ -131,7 +131,7 @@ export const fetchToken: string => Promise<LinkedInToken> = async payload => {
 
 export const logError = (error: ErrorType) =>
   // eslint-disable-next-line
-  console.error(JSON.stringify(error, null, 2))
+  // console.error(JSON.stringify(error, null, 2))
 
 export const onLoadStart = async (
   url: string,
@@ -276,7 +276,7 @@ export default class LinkedInModal extends React.Component {
   }
 
   open = () => {
-    console.log('opening')
+    // console.log('opening')
     const { onOpen } = this.props
     if (onOpen) onOpen()
     this.setState({ modalVisible: true })
